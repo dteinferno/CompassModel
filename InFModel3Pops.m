@@ -66,6 +66,10 @@ caxis([min(min(allWs)) max(max(allWs))]);
 axis square;
 colorbar;
 colormap('jet');
+ylabel('pre synpatic');
+xlabel('post synaptic');
+title('synaptic weights');
+set(gca','YTick',[nEPG/2+1 nEPG+nPEN/2+1 nEPG+nPEN*1.5+1],'YTickLabel',{'E-PGs','R P-ENS','L P-ENs'});
 
 %% Define the time span, the intial conditions, and the velocity
 
@@ -74,7 +78,6 @@ tSpan = linspace(0, 10, 10/tStep+1); % set the time span of the ring attractor
 VAll = zeros(nEPG+2*nPEN,length(tSpan)); % cell voltages
 SAll = VAll; % cell spikes
 synput = VAll; % synaptic input
-IAll= VAll;
 VAll(:,1) = zeros(nEPG+2*nPEN,1)+EL; % define the initial conditions
 VAll(1:10,1) = -0.055;
 vIn = 1; % set a rotational velocity input
@@ -124,7 +127,17 @@ end
 % Plot some things
 figure('units','normalized','outerposition',[0.5 0.5 0.5 0.5]);
 imagesc(tSpan,[1:nEPG+2*nPEN],VAll);
-% caxis([0 1.5*max(max(NVals))]);
+xlabel('time (s)');
+set(gca','YTick',[nEPG/2+1 nEPG+nPEN/2+1 nEPG+nPEN*1.5+1],'YTickLabel',{'E-PGs','R P-ENS','L P-ENs'});
+title('membrane potential (V)')
+colorbar;
 
 figure('units','normalized','outerposition',[0.5 0 0.5 0.5]);
-imagesc(tSpan,[1:nEPG+2*nPEN],SAll);
+hold on;
+for cell = 1:nEPG+2*nPEN
+    plot(tSpan,SAll(cell,:)+(nEPG+2*nPEN-cell),'k');
+end
+set(gca','YTick',[nPEN/2+1 nPEN*1.5+1 nPEN*2+nEPG/2+1  ],'YTickLabel',{'L P-ENs','R P-ENS','E-PGs'});
+title('spikes')
+ylim([0 nEPG+nPEN*2+1]);
+xlabel('time (s)');
