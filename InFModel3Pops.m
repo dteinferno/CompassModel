@@ -1,5 +1,10 @@
 %% Model a ring attractor with three populations (E-PGs, R P-ENS, L P-ENs)
 
+clear;
+close all;
+clc;
+cd('D:\CompassModel');
+
 %% Set model parameters
 % number of neurons per neuron type
 nEPG = 54;
@@ -9,6 +14,7 @@ EperP = nEPG/nPEN/2;
 % time constants
 tau(1) = 0.08; % E-PG neural time constant
 tau(2) = 0.065; % P-EN neural time constant
+tauSyn = 0.01; % synaptic time constant
 
 % resting and threshold potentials
 EL = -0.065; % Resting potential
@@ -27,8 +33,8 @@ glomAngs(end) = [];
 allWs = zeros(nEPG+2*nPEN,nEPG+2*nPEN);
 
 % Create the E-PG to P-EN weights
-alpha = 100; % weight multiplier for the direct E-PG to P-EN connections (and vice versa)
-beta = 250; % weight multiplier for inhibitory  E-PG to P-EN connections
+alpha = 25; % weight multiplier for the direct E-PG to P-EN connections (and vice versa)
+beta = 25; % weight multiplier for inhibitory  E-PG to P-EN connections
 
 allWs(1:nEPG,nEPG+1:nEPG+2*nPEN) = -beta/nEPG;
 allWs(1:EperP,nEPG+1)=allWs(EperP,nEPG+1:nEPG+1)+2*alpha/nEPG;
@@ -53,7 +59,8 @@ for it = 2:nPEN
     allWs(nEPG+nPEN+it,1:nEPG) = circshift(allWs(nEPG+nPEN+it-1,1:nEPG),2*EperP,2);
 end
 
-figure;
+% Plot the weight matrix
+figure('units','normalized','outerposition',[0 0.5 0.5 0.5]);
 imagesc(allWs);
 caxis([min(min(allWs)) max(max(allWs))]);
 axis square;
@@ -62,24 +69,36 @@ colormap('jet');
 
 %% Define the time span, the intial conditions, and the velocity
 
-tStep = 1/1000;
-tSpan = linspace(0, 30, 200/tStep+1); % set the time span of the ring attractor
-VAll = zeros(nEPG+2*nPEN,length(tSpan));
+tStep = 1/10000; % time step for the simulation
+tSpan = linspace(0, 10, 10/tStep+1); % set the time span of the ring attractor
+VAll = zeros(nEPG+2*nPEN,length(tSpan)); % cell voltages
+SAll = VAll; % cell spikes
+synput = VAll; % synaptic input
+IAll= VAll;
 VAll(:,1) = zeros(nEPG+2*nPEN,1)+EL; % define the initial conditions
-vIn = 0.01;
+VAll(1:10,1) = -0.055;
+vIn = 1; % set a rotational velocity input
 
 %% Solve the ODEs and plot the results
+
+% Precalculate some things
+synDecay = exp(-tStep/tauSyn);
+
 % Define the function for the ODE
 for tPt = 2:length(tSpan)
     for nron = 1:nEPG+2*nPEN
         % Reset the voltage if it's over the theshold
         if VAll(nron,tPt-1) > VTh
             VAll(nron,tPt) = EL;
+            SAll(nron,tPt) = 1;
+            synput(nron,tPt) = 1;
         else % Sum the currents using the weight matrices
+            synput(nron,tPt) = synput(nron,tPt-1)*synDecay;
             ISum = 0;
             for prtnr = 1:nEPG+2*nPEN
-                ISum = ISum + allWs(prtnr,nron)*(VAll(prtnr,tPt-1)-EL);
+                ISum = ISum + allWs(prtnr,nron)*synput(prtnr,tPt-1);
             end
+            IAll(nron,tPt) = ISum;
 
             % Define the diff. eqs.
             if nron <= nEPG
@@ -103,6 +122,9 @@ for tPt = 2:length(tSpan)
 end
 
 % Plot some things
-figure;
+figure('units','normalized','outerposition',[0.5 0.5 0.5 0.5]);
 imagesc(tSpan,[1:nEPG+2*nPEN],VAll);
 % caxis([0 1.5*max(max(NVals))]);
+
+figure('units','normalized','outerposition',[0.5 0 0.5 0.5]);
+imagesc(tSpan,[1:nEPG+2*nPEN],SAll);
