@@ -5,23 +5,24 @@ close all;
 clc;
 cd('D:\CompassModel');
 
+
 %% Set model parameters
 % number of neurons per neuron type
 nEPG = 54;
 nPEN = 9;
-EperP = nEPG/nPEN/2;
+EperP = nEPG/nPEN/2; % # of E-PGs per P-EN
 
 % time constants
 tau(1) = 0.08; % E-PG neural time constant
 tau(2) = 0.065; % P-EN neural time constant
-tauSyn = 0.01; % synaptic time constant
+tauSyn = 0.1; % synaptic time constant
 
 % resting and threshold potentials
 EL = -0.065; % Resting potential
 VTh = -0.05; % Threshold potential
 
 % input resistance
-RIn = 0.1;
+RIn = 0.2;
 
 %% Define the weight matrices
 
@@ -33,8 +34,8 @@ glomAngs(end) = [];
 allWs = zeros(nEPG+2*nPEN,nEPG+2*nPEN);
 
 % Create the E-PG to P-EN weights
-alpha = 25; % weight multiplier for the direct E-PG to P-EN connections (and vice versa)
-beta = 25; % weight multiplier for inhibitory  E-PG to P-EN connections
+alpha = 6; % weight multiplier for the direct E-PG to P-EN connections (and vice versa)
+beta = 6; % weight multiplier for inhibitory  E-PG to P-EN connections
 
 allWs(1:nEPG,nEPG+1:nEPG+2*nPEN) = -beta/nEPG;
 allWs(1:EperP,nEPG+1)=allWs(EperP,nEPG+1:nEPG+1)+2*alpha/nEPG;
@@ -59,8 +60,9 @@ for it = 2:nPEN
     allWs(nEPG+nPEN+it,1:nEPG) = circshift(allWs(nEPG+nPEN+it-1,1:nEPG),2*EperP,2);
 end
 
+if 0
 % Plot the weight matrix
-figure('units','normalized','outerposition',[0 0.5 0.5 0.5]);
+wtMtrx = figure('units','normalized','outerposition',[0 0.5 0.5 0.5]);
 imagesc(allWs);
 caxis([min(min(allWs)) max(max(allWs))]);
 axis square;
@@ -70,11 +72,15 @@ ylabel('pre synpatic');
 xlabel('post synaptic');
 title('synaptic weights');
 set(gca','YTick',[nEPG/2+1 nEPG+nPEN/2+1 nEPG+nPEN*1.5+1],'YTickLabel',{'E-PGs','R P-ENS','L P-ENs'});
+end
+
+% set(wtMtrx,'PaperPositionMode','manual','PaperOrientation','portrait','PaperUnits','inches','PaperPosition',[0 0 8.5 11]);
+% print(wtMtrx,'Weights','-dpdf');
 
 %% Define the time span, the intial conditions, and the velocity
 
 tStep = 1/10000; % time step for the simulation
-tSpan = linspace(0, 10, 10/tStep+1); % set the time span of the ring attractor
+tSpan = linspace(0, 4, 4/tStep+1); % set the time span of the ring attractor
 VAll = zeros(nEPG+2*nPEN,length(tSpan)); % cell voltages
 SAll = VAll; % cell spikes
 synput = VAll; % synaptic input
@@ -94,7 +100,7 @@ for tPt = 2:length(tSpan)
         if VAll(nron,tPt-1) > VTh
             VAll(nron,tPt) = EL;
             SAll(nron,tPt) = 1;
-            synput(nron,tPt) = 1;
+            synput(nron,tPt) = 1+synput(nron,tPt-1);
         else % Sum the currents using the weight matrices
             synput(nron,tPt) = synput(nron,tPt-1)*synDecay;
             ISum = 0;
@@ -124,15 +130,18 @@ for tPt = 2:length(tSpan)
     end
 end
 
+if 1
 % Plot some things
-figure('units','normalized','outerposition',[0.5 0.5 0.5 0.5]);
+VnSpkes = figure('units','normalized','outerposition',[0.5 0 0.5 1]);
+
+subplot(2,1,1);
 imagesc(tSpan,[1:nEPG+2*nPEN],VAll);
 xlabel('time (s)');
 set(gca','YTick',[nEPG/2+1 nEPG+nPEN/2+1 nEPG+nPEN*1.5+1],'YTickLabel',{'E-PGs','R P-ENS','L P-ENs'});
 title('membrane potential (V)')
 colorbar;
 
-figure('units','normalized','outerposition',[0.5 0 0.5 0.5]);
+subplot(2,1,2);
 hold on;
 for cell = 1:nEPG+2*nPEN
     plot(tSpan,SAll(cell,:)+(nEPG+2*nPEN-cell),'k');
@@ -141,3 +150,7 @@ set(gca','YTick',[nPEN/2+1 nPEN*1.5+1 nPEN*2+nEPG/2+1  ],'YTickLabel',{'L P-ENs'
 title('spikes')
 ylim([0 nEPG+nPEN*2+1]);
 xlabel('time (s)');
+end
+
+% set(VnSpkes,'PaperPositionMode','manual','PaperOrientation','landscape','PaperUnits','inches','PaperPosition',[0 0 11 8.5]);
+% print(VnSpkes,'Output','-dpdf');
