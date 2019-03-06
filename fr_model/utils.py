@@ -16,5 +16,9 @@ def get_cont(vec, thresh = 1.2*np.pi):
             vec[i-1] = np.nan
     return vec
 
+def optimize_params(cx):
+    
+    print('ok')
+    
 
 

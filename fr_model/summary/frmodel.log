@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  4 MAR 2019 18:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  6 MAR 2019 10:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -389,158 +389,135 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count129
-LaTeX Font Info:    Try loading font information for U+msa on input line 62.
+<../figures/model_structure.png, id=1, 837.1275pt x 702.625pt>
+File: ../figures/model_structure.png Graphic file (type png)
+<use ../figures/model_structure.png>
+Package pdftex.def Info: ../figures/model_structure.png  used on input line 70.
+
+(pdftex.def)             Requested size: 220.63673pt x 185.17622pt.
+LaTeX Font Info:    Try loading font information for U+msa on input line 85.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 62.
+LaTeX Font Info:    Try loading font information for U+msb on input line 85.
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-<../figures/testvels_early.png, id=1, 433.62pt x 289.08pt>
-File: ../figures/testvels_early.png Graphic file (type png)
-<use ../figures/testvels_early.png>
-Package pdftex.def Info: ../figures/testvels_early.png  used on input line 97.
-(pdftex.def)             Requested size: 220.63673pt x 147.0936pt.
-<../figures/testvels_late.png, id=4, 433.62pt x 289.08pt>
-File: ../figures/testvels_late.png Graphic file (type png)
-<use ../figures/testvels_late.png>
-Package pdftex.def Info: ../figures/testvels_late.png  used on input line 104.
-(pdftex.def)             Requested size: 220.63673pt x 147.0936pt.
-<../figures/real_heading.png, id=6, 433.62pt x 289.08pt>
-File: ../figures/real_heading.png Graphic file (type png)
-<use ../figures/real_heading.png>
-Package pdftex.def Info: ../figures/real_heading.png  used on input line 122.
-(pdftex.def)             Requested size: 220.63673pt x 147.0936pt.
-<../figures/sim_vel.png, id=8, 433.62pt x 289.08pt>
-File: ../figures/sim_vel.png Graphic file (type png)
-<use ../figures/sim_vel.png>
-Package pdftex.def Info: ../figures/sim_vel.png  used on input line 129.
-(pdftex.def)             Requested size: 220.63673pt x 147.0936pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figures/sim_head.png, id=10, 433.62pt x 289.08pt>
-File: ../figures/sim_head.png Graphic file (type png)
-<use ../figures/sim_head.png>
-Package pdftex.def Info: ../figures/sim_head.png  used on input line 141.
-(pdftex.def)             Requested size: 374.57353pt x 249.72874pt.
-<../figures/sim_bump.png, id=12, 433.62pt x 289.08pt>
-File: ../figures/sim_bump.png Graphic file (type png)
-<use ../figures/sim_bump.png>
-Package pdftex.def Info: ../figures/sim_bump.png  used on input line 148.
-(pdftex.def)             Requested size: 374.57353pt x 249.72874pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[1
+) [1
 
 {/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <../figu
-res/testvels_early.png> <../figures/testvels_late.png>]
-<../figures/sim_mag.png, id=31, 433.62pt x 289.08pt>
+res/model_structure.png>]
+<../figures/testvels_early.png, id=18, 433.62pt x 289.08pt>
+File: ../figures/testvels_early.png Graphic file (type png)
+<use ../figures/testvels_early.png>
+Package pdftex.def Info: ../figures/testvels_early.png  used on input line 117.
+
+(pdftex.def)             Requested size: 220.63673pt x 147.09146pt.
+<../figures/testvels_late.png, id=20, 433.62pt x 289.08pt>
+File: ../figures/testvels_late.png Graphic file (type png)
+<use ../figures/testvels_late.png>
+Package pdftex.def Info: ../figures/testvels_late.png  used on input line 124.
+(pdftex.def)             Requested size: 220.63673pt x 147.09146pt.
+<../figures/real_heading.png, id=22, 433.62pt x 289.08pt>
+File: ../figures/real_heading.png Graphic file (type png)
+<use ../figures/real_heading.png>
+Package pdftex.def Info: ../figures/real_heading.png  used on input line 142.
+(pdftex.def)             Requested size: 236.03746pt x 166.29977pt.
+<../figures/sim_head.png, id=24, 433.62pt x 289.08pt>
+File: ../figures/sim_head.png Graphic file (type png)
+<use ../figures/sim_head.png>
+Package pdftex.def Info: ../figures/sim_head.png  used on input line 149.
+(pdftex.def)             Requested size: 236.03746pt x 166.29977pt.
+ [2 <../figures/testvels_early.png> <../figures/testvels_late.png> <../figures/
+real_heading.png> <../figures/sim_head.png>]
+<../figures/sim_vel.png, id=39, 433.62pt x 289.08pt>
+File: ../figures/sim_vel.png Graphic file (type png)
+<use ../figures/sim_vel.png>
+Package pdftex.def Info: ../figures/sim_vel.png  used on input line 164.
+(pdftex.def)             Requested size: 323.2665pt x 215.52144pt.
+<../figures/sim_mag.png, id=41, 433.62pt x 289.08pt>
 File: ../figures/sim_mag.png Graphic file (type png)
 <use ../figures/sim_mag.png>
-Package pdftex.def Info: ../figures/sim_mag.png  used on input line 166.
-(pdftex.def)             Requested size: 374.57353pt x 249.72874pt.
-<../figures/sim_int.png, id=33, 433.62pt x 289.08pt>
+Package pdftex.def Info: ../figures/sim_mag.png  used on input line 191.
+(pdftex.def)             Requested size: 241.16582pt x 169.912pt.
+<../figures/sim_int.png, id=43, 433.62pt x 289.08pt>
 File: ../figures/sim_int.png Graphic file (type png)
 <use ../figures/sim_int.png>
-Package pdftex.def Info: ../figures/sim_int.png  used on input line 173.
-(pdftex.def)             Requested size: 374.57353pt x 249.72874pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figures/D7_sequential_mags.png, id=35, 433.62pt x 289.08pt>
+Package pdftex.def Info: ../figures/sim_int.png  used on input line 198.
+(pdftex.def)             Requested size: 241.16582pt x 169.912pt.
+ [3 <../figures/sim_vel.png> <../figures/sim_mag.png> <../figures/sim_int.png>]
+<../figures/D7_sequential_mags.png, id=54, 433.62pt x 289.08pt>
 File: ../figures/D7_sequential_mags.png Graphic file (type png)
 <use ../figures/D7_sequential_mags.png>
 Package pdftex.def Info: ../figures/D7_sequential_mags.png  used on input line 
-189.
-(pdftex.def)             Requested size: 374.57353pt x 249.72874pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figures/D7_inhib_10.png, id=37, 433.62pt x 289.08pt>
+217.
+(pdftex.def)             Requested size: 323.2665pt x 215.52144pt.
+<../figures/D7_inhib_10.png, id=56, 433.62pt x 289.08pt>
 File: ../figures/D7_inhib_10.png Graphic file (type png)
 <use ../figures/D7_inhib_10.png>
-Package pdftex.def Info: ../figures/D7_inhib_10.png  used on input line 209.
+Package pdftex.def Info: ../figures/D7_inhib_10.png  used on input line 238.
 (pdftex.def)             Requested size: 164.20134pt x 103.88133pt.
-<../figures/D7_inhib_06.png, id=39, 433.62pt x 289.08pt>
-File: ../figures/D7_inhib_06.png Graphic file (type png)
-<use ../figures/D7_inhib_06.png>
-Package pdftex.def Info: ../figures/D7_inhib_06.png  used on input line 216.
+<../figures/D7_inhib_07.png, id=58, 433.62pt x 289.08pt>
+File: ../figures/D7_inhib_07.png Graphic file (type png)
+<use ../figures/D7_inhib_07.png>
+Package pdftex.def Info: ../figures/D7_inhib_07.png  used on input line 245.
 (pdftex.def)             Requested size: 164.20134pt x 103.88133pt.
-<../figures/D7_inhib_03.png, id=41, 433.62pt x 289.08pt>
-File: ../figures/D7_inhib_03.png Graphic file (type png)
-<use ../figures/D7_inhib_03.png>
-Package pdftex.def Info: ../figures/D7_inhib_03.png  used on input line 223.
+<../figures/D7_inhib_04.png, id=60, 433.62pt x 289.08pt>
+File: ../figures/D7_inhib_04.png Graphic file (type png)
+<use ../figures/D7_inhib_04.png>
+Package pdftex.def Info: ../figures/D7_inhib_04.png  used on input line 252.
 (pdftex.def)             Requested size: 164.20134pt x 103.88133pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figures/sim_head_D7_07.png, id=43, 433.62pt x 289.08pt>
+ [4 <../figures/D7_sequential_mags.png> <../figures/D7_inhib_10.png> <../figure
+s/D7_inhib_07.png> <../figures/D7_inhib_04.png>]
+<../figures/sim_head_D7_07.png, id=73, 433.62pt x 289.08pt>
 File: ../figures/sim_head_D7_07.png Graphic file (type png)
 <use ../figures/sim_head_D7_07.png>
-Package pdftex.def Info: ../figures/sim_head_D7_07.png  used on input line 235.
+Package pdftex.def Info: ../figures/sim_head_D7_07.png  used on input line 268.
 
 (pdftex.def)             Requested size: 246.29417pt x 164.19946pt.
-<../figures/sim_head_D7_04.png, id=45, 433.62pt x 289.08pt>
+<../figures/sim_head_D7_04.png, id=75, 433.62pt x 289.08pt>
 File: ../figures/sim_head_D7_04.png Graphic file (type png)
 <use ../figures/sim_head_D7_04.png>
-Package pdftex.def Info: ../figures/sim_head_D7_04.png  used on input line 242.
+Package pdftex.def Info: ../figures/sim_head_D7_04.png  used on input line 275.
 
 (pdftex.def)             Requested size: 246.29417pt x 164.19946pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<../figures/sim_head_PEN1_07.png, id=47, 433.62pt x 289.08pt>
+<../figures/sim_head_PEN1_07.png, id=77, 433.62pt x 289.08pt>
 File: ../figures/sim_head_PEN1_07.png Graphic file (type png)
 <use ../figures/sim_head_PEN1_07.png>
-Package pdftex.def Info: ../figures/sim_head_PEN1_07.png  used on input line 25
-4.
+Package pdftex.def Info: ../figures/sim_head_PEN1_07.png  used on input line 29
+0.
 (pdftex.def)             Requested size: 246.29417pt x 164.19946pt.
-<../figures/sim_head_PEG_07.png, id=49, 433.62pt x 289.08pt>
+<../figures/sim_head_PEG_07.png, id=79, 433.62pt x 289.08pt>
 File: ../figures/sim_head_PEG_07.png Graphic file (type png)
 <use ../figures/sim_head_PEG_07.png>
-Package pdftex.def Info: ../figures/sim_head_PEG_07.png  used on input line 261
+Package pdftex.def Info: ../figures/sim_head_PEG_07.png  used on input line 297
 .
 (pdftex.def)             Requested size: 246.29417pt x 164.19946pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[2 <../figures/real_heading.png> <../figures/sim_vel.png>] [3 <../figures/sim_h
-ead.png> <../figures/sim_bump.png>] [4 <../figures/sim_mag.png> <../figures/sim
-_int.png>] [5 <../figures/D7_sequential_mags.png> <../figures/D7_inhib_10.png> 
-<../figures/D7_inhib_06.png> <../figures/D7_inhib_03.png> <../figures/sim_head_
-D7_07.png> <../figures/sim_head_D7_04.png>] [6 <../figures/sim_head_PEN1_07.png
-> <../figures/sim_head_PEG_07.png>] (./frmodel.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+ [5 <../figures/sim_head_D7_07.png> <../figures/sim_head_D7_04.png> <../figures
+/sim_head_PEN1_07.png> <../figures/sim_head_PEG_07.png>] [6] (./frmodel.aux) ) 
 Here is how much of TeX's memory you used:
- 6397 strings out of 492649
- 92825 string characters out of 6129622
- 175249 words of memory out of 5000000
- 10177 multiletter control sequences out of 15000+600000
- 6243 words of font info for 25 fonts, out of 8000000 for 9000
+ 6444 strings out of 492649
+ 93419 string characters out of 6129622
+ 172559 words of memory out of 5000000
+ 10218 multiletter control sequences out of 15000+600000
+ 9046 words of font info for 36 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,9n,39p,406b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></
-usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></us
-r/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on frmodel.pdf (6 pages, 327795 bytes).
+ 41i,10n,39p,793b,519s stack positions out of 5000i,500n,10000p,200000b,80000s
+<
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></
+usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
+al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texl
+ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+Output written on frmodel.pdf (6 pages, 393273 bytes).
 PDF statistics:
- 120 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
+ 124 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  177 words of extra memory for PDF output out of 10000 (max. 10000000)
 

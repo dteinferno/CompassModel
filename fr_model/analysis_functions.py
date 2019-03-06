@@ -16,6 +16,17 @@ from scipy.optimize import curve_fit
 def f(x, a):
     return a*x
 
+
+def testmodel():
+    cx = frmodel()
+    cx.add_event([300, 'shi', 'D7', 0.5]) #inhibit
+    cx.add_event([500, 'shi', 'D7', 2]) #back to normal
+    cx.add_event([510, 'opto', 'EPG', 3, 2]) #zap back into bump
+    cx.add_event([700, 'vel', 1]) #rotate right
+    cx.run_model(tstop=1000)
+
+#testmodel() 
+
 def testvels(vels = np.arange(0,2.55, 0.025), time = 'late'):
     if time == 'early':
         storedat = 20
@@ -62,7 +73,7 @@ def testvels(vels = np.arange(0,2.55, 0.025), time = 'late'):
 #pickle.dump([vels, meanvels], open('pickled/linfit_early.pickled', 'wb'))
 
 
-def sequential_shibire(Type = 'D7', inhib = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2]):
+def sequential_shibire(Type = 'D7', inhib = [1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3]):
     cx = frmodel()
     t = 0
     ts = [t]

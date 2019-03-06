@@ -42,8 +42,8 @@ class frmodel():
             for post in dic.keys():
                 ws[pre][post] = np.zeros((N,N)) #initialize
                 
-        for i in range(8):
-            for j in range(8):
+        for i in range(N):
+            for j in range(N):
                 if i == j:
                     #same-tile activation. Label PEN neurons accordin to the
                     #EB tile of the EPG neuron innervating them
@@ -52,11 +52,11 @@ class frmodel():
                     ws['EPG']['PEG'][i,j] = 2.7
                     ws['EPG']['D7'][i,j] = 0.80
                     ws['PEG']['EPG'][i,j] = 2.7
-                    ws['EPG']['EPG'][i,j] = 0.40
+                    ws['EPG']['EPG'][i,j] = 0.30
                 else:
-                    ws['D7']['PENl'][i,j] = 1 #D7 gives global inhibition
-                    ws['D7']['PENr'][i,j] = 1
-                    ws['D7']['PEG'][i,j] = 1.5
+                    ws['D7']['PENl'][i,j] = 0.90 #D7 gives global inhibition
+                    ws['D7']['PENr'][i,j] = 0.90
+                    ws['D7']['PEG'][i,j] = 1.35
                     #PEN1s innervate adjacent EPG
                     if j-i == 1 or j-i == -(N-1): ws['PENl']['EPG'][i,j] = 1.55
                     if i-j == 1 or i-j == -(N-1): ws['PENr']['EPG'][i,j] = 1.55      
@@ -76,6 +76,16 @@ class frmodel():
         self.plottimes = []
         
         self.events = {} #angular velocity
+        
+    def new_connectivity(self, pre, post, connectivity):
+        '''provide connectivity for neuron in tile 1
+            connectivity = [c_pre1post1, c_pre1post2, ... , c_pre1post8]'''
+        if not pre in self.ws.keys(): self.ws[pre] = {}
+        if not post in self.ws[pre].keys(): self.ws[pre][post] = np.zeros((self.N,self.N))
+        for i in range(self.N):
+            for j in range(self.N):
+                self.ws[pre][post][i,j] = connectivity[j-i]
+        
             
     def add_event(self, event, plot=False):
         t = event[0]
@@ -384,39 +394,8 @@ class frmodel():
         if not fname == 'none': plt.savefig(fname)
         plt.show()
 
+   
 
-def testmodel():
-    cx = frmodel()
-    cx.add_event([300, 'shi', 'D7', 0.5]) #inhibit
-    cx.add_event([500, 'shi', 'D7', 2]) #back to normal
-    cx.add_event([510, 'opto', 'EPG', 3, 2]) #zap back into bump
-    cx.add_event([700, 'vel', 1]) #rotate right
-    cx.run_model(tstop=1000)
-
-#testmodel()    
-#testvels()
-    
-cx = frmodel()
-cx.add_event([1000, 'vel', 0.45])
-cx.add_event([2000, 'vel', 0])
-cx.add_event([3000, 'vel', -0.45])
-cx.add_event([4000, 'vel', 0.45])
-cx.add_event([5000, 'vel', 0])
-#cx.run_model(tstop = 6000, dt = 0.1, storedat = 200)
-#cx.plotdist(time=90, t='EPG', fname='EPG_bump.png')
-#cx.plotdist(time=2500, t='EPG', fname='EPG_bump_D7_0.35.png')
-
-
-'''
-matdat= '/Users/kris/Documents/jayaraman/summer2018/\
-Kris/Documents/imaging/Data_Dan/EB/PEN1_R_EPG_G_EB/cont.mat'
-
-matdat = sio.loadmat(matdat)
-matdat['alldata']
-dat = matdat['alldata'][0,0][0,0][2] #shape 5,1 for 5 flies
-fly = dat[0,3] #look at fly 4
-fly = fly[0,0][1] #this contains the datya
-trial = fly[0,2][0,0] #look at trial 3
 '''
 
 #EPG:
@@ -429,4 +408,4 @@ trial = fly[0,2][0,0] #look at trial 3
 #dPEG = dt/tauPEG*(-PEG + transfer(w_EPG_PEG.dot(EPG) + w_D7_PEG.dot(D7) ))
 
 #dD7 = dt/tauD7*(-D7 + transfer(w_EPG_D7.dot(EPG)))
-
+'''
